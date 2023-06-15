@@ -45,9 +45,14 @@ async def check():
 @app.get('/appData')
 async def appData():
     global mode, animateList, t, status
+    return {'mode': mode, 'animate': animateList}
+
+    
+@app.get('/esp32Data')
+async def esp32Data():
+    global mode, animateList, t, status
     status = 0
     return {'mode': mode, 'animate': animateList, 'date': str(t)[:10], 'time': str(t)[11:-7]}
-
 
 
 if __name__ == '__main__':
