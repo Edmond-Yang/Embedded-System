@@ -52,7 +52,7 @@ async def appData():
 async def esp32Data():
     global mode, animateList, t, status
     status = 0
-    return {'mode': mode, 'animate': animateList, 'date': str(t)[:10], 'time': str(t)[11:-7]}
+    return {'mode': mode, 'animate': animateList, 'date': str(t)[:-10], 'length': len(animateList)}
 
 
 if __name__ == '__main__':
