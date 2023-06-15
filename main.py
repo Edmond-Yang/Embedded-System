@@ -11,7 +11,7 @@ class UploadItem(BaseModel):
 mode = '來回播放'
 status = 0
 animateList = []
-t = datetime.datetime.now()
+t = datetime.datetime.now() + datetime.timedelta(hours=8)
 
 
 
@@ -30,7 +30,7 @@ async def upload(item: UploadItem):
     
     mode = item.mode
     animateList = item.animate
-    t = datetime.datetime.now()
+    t = datetime.datetime.now() + datetime.timedelta(hours=8)
     
     status = 200
     
@@ -46,7 +46,7 @@ async def check():
 async def appData():
     global mode, animateList, t, status
     status = 0
-    return {'mode': mode, 'animate': animateList, 'date': str(t)[:10], 'time': str(t)[12:-7]}
+    return {'mode': mode, 'animate': animateList, 'date': str(t)[:10], 'time': str(t)[11:-7]}
 
 
 
