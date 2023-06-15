@@ -9,7 +9,7 @@ class UploadItem(BaseModel):
     mode: str
 
 mode = '來回播放'
-status = 0
+status = 200
 animateList = []
 t = datetime.datetime.now() + datetime.timedelta(hours=8)
 
