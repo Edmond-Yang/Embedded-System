@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 import datetime
+import json
 
 
 class UploadItem(BaseModel):
@@ -13,9 +14,12 @@ status = 200
 animateList = []
 t = datetime.datetime.now() + datetime.timedelta(hours=8)
 
+with open('data.json', 'r', encoding='utf-8') as file:
+    animateList = json.loads(file.read())
 
 
-app = FastAPI(
+
+app = FastAPI(  
     title='Embedded System project'
 )
 
@@ -31,6 +35,9 @@ async def upload(item: UploadItem):
     mode = item.mode
     animateList = item.animate
     t = datetime.datetime.now() + datetime.timedelta(hours=8)
+    
+    with open('data.json', 'w', encoding='utf-8') as file:
+        file.write(json.dumps(animateList, ensure_ascii= False))
     
     status = 200
     
